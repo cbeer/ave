@@ -4,18 +4,29 @@
 	 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script> 
 	 <script type="text/javascript" src="http://plugins.jquery.com/files/jquery.parsequery.min_.js_.txt"></script>
 	 <script type="text/javascript" src="jquery.ave.clip.js"></script>
+	 <script type="text/javascript" src="jquery.ave.sync.js"></script>
 	 <script type="text/javascript" src="jquery.ui.ave.js"></script>
 	 <script type="text/javascript">
 $(function() {
    $('video').ave_clip();
+   $('video').ave_sync($('.transcript'));
    $('video').ave();
 });
 	 </script>
 
 	 <link type="text/css" href="http://jqueryui.com/themes/base/jquery.ui.all.css" rel="stylesheet" />
+	 <style>
+                .active { font-weight: bold; }
+	 </style
 
        </head>
        <body>
               <video src="test.mp4" controls></video>
+
+	      <div class="transcript">
+                    <div smil:begin="15.0" smil:end="20.0">15.0</div>
+                    <div smil:begin="20.0">20.0</div>
+                    <div smil:begin="25.0" smil:end="30.0">25.0</div>
+	      </div>
        </body>
 </html>
