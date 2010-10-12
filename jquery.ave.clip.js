@@ -22,12 +22,18 @@
      }
     });
   }
-  
-  $.fn.ave_clip.setup = function(obj, settings) {
+
+  $.fn.ave_clip.initialize = function(obj, settings) {
       $(obj).attr('data-clip_in', settings['clip_in'] || obj.initialTime || 0);
       $(obj).attr('data-clip_out', settings['clip_out'] || obj.duration || 0);
+      $(obj).trigger('ave:update');
 
-      $(obj).bind('loadedmetadata', function() { $.fn.ave_clip.setup(obj, settings); });
+  }
+  
+  $.fn.ave_clip.setup = function(obj, settings) {
+	  $.fn.ave_clip.initialize(obj, settings); 
+
+      $(obj).bind('loadedmetadata', function() { $.fn.ave_clip.initialize(obj, settings); });
 
       $(obj).bind('play', function() {
          if(this.currentTime >= parseFloat($(this).attr('data-clip_out')) - 0.2 ) {
@@ -51,7 +57,6 @@
 	} 
       });
 
-      $(obj).trigger('ave:update');
   }
 })( jQuery );
 
