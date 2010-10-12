@@ -11,6 +11,10 @@
 	 <script type="text/javascript" src="flowplayer-html5.js"></script>
 	 <script type="text/javascript">
 $(function() {
+		src = $('#player video source').attr('src');
+		$('#player').children().remove();
+		$('#player').addClass('video');
+		flowplayer("player", { src: "flowplayer-3.2.5.swf", version: [9, 115] }, { clip: { url: src }, onLoad: flowplayer_html5_compatibility_mode });
 
    $('.video').ave_clip();
    $('.video').ave_sync($('.transcript'));
