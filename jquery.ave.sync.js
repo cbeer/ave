@@ -32,7 +32,12 @@
         $('<div class="' + settings['trigger']['class'] + '">' + settings['trigger']['content'] + '</div>')
 	    .prependTo(this)
 	    .bind('click', function() { 
-	      $(this).closest('[data-ave_sync]').data(settings['master']).currentTime = $(this).parent().attr('smil:begin'); 
+	      t = $(this).parent().attr('smil:begin');
+	      $($(this).closest('[data-ave_sync]').data(settings['master'])).attr('data-clip_in', 0);  
+	      $($(this).closest('[data-ave_sync]').data(settings['master'])).attr('data-clip_out', $(this).closest('[data-ave_sync]').data(settings['master']).duration);  
+	      $($(this).closest('[data-ave_sync]').data(settings['master'])).trigger('ave:update');
+
+	      $(this).closest('[data-ave_sync]').data(settings['master']).currentTime = t; 
             });
       });
 
