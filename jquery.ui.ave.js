@@ -46,7 +46,7 @@
 
 	values = $(this).slider('values');
 	
-	if($('.playhead.ui-state-focus', this.element).length != 0) {      
+	if($('.playhead.ui-state-focus', this.element).length != 0 || $('.ui-state-focus', this.element).length  == 0) {      
 	  event.data.context.element.get(0).currentTime = values[0];
 	}
 
